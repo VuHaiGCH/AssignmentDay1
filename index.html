@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo HTML</title>
+</head>
+<body>
+
+	<div id="message"></div>
+	<input type="number" id="number">
+	<button id="guessButton">Guess</button>
+
+	<script type="text/javascript">
+		var button = document.getElementById('guessButton');
+		var result = Math.floor(Math.random() * 100);
+		var pastGuess = 0;
+		button.addEventListener('click', function() {
+			var userGuess = document.getElementById("number").value;
+
+			console.log(userGuess);
+			console.log(result);
+			if(pastGuess < 10){
+				if(userGuess == result){
+				document.getElementById("message").innerHTML = "Congratulations!! " + result + " was the correct answer! It took you " + pastGuess + " tries to the answer";
+				document.getElementById("message").style.backgroundColor = "yellow";
+			}
+			else if(userGuess < result){
+				document.getElementById("message").innerHTML = "Sorry your guess is too low";
+				document.getElementById("message").style.backgroundColor = "red";
+				pastGuess++;
+				console.log(pastGuess);
+			}
+			else{
+				document.getElementById("message").innerHTML = "Sorry your guess is too high";
+				document.getElementById("message").style.backgroundColor = "red";
+
+				pastGuess++;
+				console.log(pastGuess);
+			}
+			}
+			else document.getElementById("message").innerHTML = "You failed";
+
+		});
+	</script>
+
+</body>
+</html>
